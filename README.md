@@ -1,0 +1,2 @@
+# xml2fb
+将Dragonbones的skeleton.xml和texture.xml转换为flatbuffers二进制
