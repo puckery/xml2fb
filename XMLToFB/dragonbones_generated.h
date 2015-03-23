@@ -533,7 +533,7 @@ struct Timeline_Frame FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   float z() const { return GetField<float>(12, 0.0); }
   uint32_t tweenRotate() const { return GetField<uint32_t>(14, 0); }
   uint16_t duration() const { return GetField<uint16_t>(16, 0); }
-  uint16_t displayIndex() const { return GetField<uint16_t>(18, 0); }
+  int16_t displayIndex() const { return GetField<int16_t>(18, 0); }
   uint8_t hide() const { return GetField<uint8_t>(20, 0); }
   const Transform *transform() const { return GetStruct<const Transform *>(22); }
   const ColorTransform *colorTransform() const { return GetStruct<const ColorTransform *>(24); }
@@ -550,7 +550,7 @@ struct Timeline_Frame FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
            VerifyField<float>(verifier, 12 /* z */) &&
            VerifyField<uint32_t>(verifier, 14 /* tweenRotate */) &&
            VerifyField<uint16_t>(verifier, 16 /* duration */) &&
-           VerifyField<uint16_t>(verifier, 18 /* displayIndex */) &&
+           VerifyField<int16_t>(verifier, 18 /* displayIndex */) &&
            VerifyField<uint8_t>(verifier, 20 /* hide */) &&
            VerifyField<Transform>(verifier, 22 /* transform */) &&
            VerifyField<ColorTransform>(verifier, 24 /* colorTransform */) &&
@@ -568,7 +568,7 @@ struct Timeline_FrameBuilder {
   void add_z(float z) { fbb_.AddElement<float>(12, z, 0.0); }
   void add_tweenRotate(uint32_t tweenRotate) { fbb_.AddElement<uint32_t>(14, tweenRotate, 0); }
   void add_duration(uint16_t duration) { fbb_.AddElement<uint16_t>(16, duration, 0); }
-  void add_displayIndex(uint16_t displayIndex) { fbb_.AddElement<uint16_t>(18, displayIndex, 0); }
+  void add_displayIndex(int16_t displayIndex) { fbb_.AddElement<int16_t>(18, displayIndex, 0); }
   void add_hide(uint8_t hide) { fbb_.AddElement<uint8_t>(20, hide, 0); }
   void add_transform(const Transform *transform) { fbb_.AddStruct(22, transform); }
   void add_colorTransform(const ColorTransform *colorTransform) { fbb_.AddStruct(24, colorTransform); }
@@ -588,7 +588,7 @@ inline flatbuffers::Offset<Timeline_Frame> CreateTimeline_Frame(flatbuffers::Fla
    float z = 0.0,
    uint32_t tweenRotate = 0,
    uint16_t duration = 0,
-   uint16_t displayIndex = 0,
+   int16_t displayIndex = 0,
    uint8_t hide = 0,
    const Transform *transform = 0,
    const ColorTransform *colorTransform = 0) {
