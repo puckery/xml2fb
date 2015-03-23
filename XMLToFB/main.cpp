@@ -248,7 +248,7 @@ Offset<Timeline> createTimelineTable(const tinyxml2::XMLElement* element)
 	const tinyxml2::XMLElement* childElement = element->FirstChildElement();
 	while (childElement)
 	{
-		timeline_frameTable = createTimeline_FrameTable(element);
+		timeline_frameTable = createTimeline_FrameTable(childElement);
 		timeline_frames.push_back(timeline_frameTable);
 
 		childElement = childElement->NextSiblingElement();
@@ -331,22 +331,22 @@ Offset<Armature> createArmatureTable(const tinyxml2::XMLElement* element)
 		if (name == "bone")
 		{
 			// bone list
-			const tinyxml2::XMLElement* element = armatureChildElement;
-			boneTable = createBoneTable(element);
+			const tinyxml2::XMLElement* childElement = armatureChildElement;
+			boneTable = createBoneTable(childElement);
 			bones.push_back(boneTable);
 		}
 		else if (name == "skin")
 		{
 			// skin list
-			const tinyxml2::XMLElement* element = armatureChildElement;
-			skinTable = createSkinTable(element);
+			const tinyxml2::XMLElement* childElement = armatureChildElement;
+			skinTable = createSkinTable(childElement);
 			skins.push_back(skinTable);
 		}
 		else if (name == "animation")
 		{
 			// animation list
-			const tinyxml2::XMLElement* element = armatureChildElement;
-			animationTable = createAnimationTable(element);
+			const tinyxml2::XMLElement* childElement = armatureChildElement;
+			animationTable = createAnimationTable(childElement);
 			animtions.push_back(animationTable);
 		}
 			armatureChildElement = armatureChildElement->NextSiblingElement();
