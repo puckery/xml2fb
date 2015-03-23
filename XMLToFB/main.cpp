@@ -516,7 +516,6 @@ std::string getSavePath(const std::string& filePath, const std::string& ext)
 int main(int argc, const char * argv[]) 
 {
 	// 判断要转换的文件
-	std::string textureFile;
 	bool isSucc = false;
 	for (int argi = 1; argi < argc; argi++)
 	{
@@ -536,12 +535,11 @@ int main(int argc, const char * argv[])
 			else if (opt == "-t")
 			{
 				// texture.xml
-				textureFile = argv[argi];
+				std::string textureFile = argv[argi + 1];
 				printf("%s", textureFile.c_str());
+				auto savePath = getSavePath(textureFile, FILE_EXT);
 
-				const std::string texturePath = "texture.xml";
-				const std::string textureSavePath = "texture.bin";
-				isSucc = buildBinary(TEXTURE, texturePath, textureSavePath);
+				isSucc = buildBinary(TEXTURE, textureFile, savePath);
 			}
 			else
 			{
