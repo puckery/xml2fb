@@ -113,7 +113,7 @@ table Timeline_Frame {
 	z:float = 0.0;
 	tweenRotate:uint = 0;
 	duration:ushort;
-	displayIndex:ushort = 0;
+	displayIndex:short = 0;
 	hide:bool = 0;
 	
 	transform:Transform;
