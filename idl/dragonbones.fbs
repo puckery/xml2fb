@@ -1,0 +1,123 @@
+// example IDL file
+
+namespace flatbuffers;
+
+struct Transform {
+	x:float;
+	y:float;
+	skX:float;
+	skY:float;
+	scX:float;
+	scY:float;
+	
+	pX:float;
+	pY:float;
+}
+
+struct ColorTransform {
+	aO:ushort;
+	rO:ushort;
+	gO:ushort;
+	bO:ushort;
+	aM:ushort;
+	rM:ushort;
+	gM:ushort;
+	bM:ushort;
+}
+
+table Dragonbones {
+	name:string;
+	version:string;
+	frameRate:ushort;
+	isGlobal:bool = 1;
+	
+	armature:[Armature];
+}
+
+table Armature {
+	name:string;
+	
+	bone:[Bone];
+	animation:[Animation];
+	skin:[Skin];
+}
+
+table Bone {
+	name:string;
+	parent:string;
+	length:short = 0;
+	
+	transform:Transform;
+}
+
+table Skin {
+	name:string;
+	
+	slot:[Slot];
+}
+
+table Slot {
+	name:string;
+	parent:string;
+	blendMode:string;
+	z:float;
+	
+	display:[Display];
+}
+
+table Display {
+	type:string;
+	name:string;
+	
+	transform:Transform;
+}
+
+table Animation {
+	name:string;
+	tweenEasing:string;
+	fadeInTime:float = 0.0;
+	scale:float = 1.0;
+	loop:uint = 1;
+	duration:ushort;
+	autoTween:ushort = 1;
+	
+	// main frame
+	frame:[Frame];
+	timeline:[Timeline];
+}
+
+table Frame {
+	event:string;
+	sound:string;
+	action:string;
+	duration:ushort;
+}
+			
+table Timeline {
+	name:string;
+	scale:float = 1;
+	offset:float = 0;
+	pX:float = 0;
+	pY:float = 0;
+	
+	// bone frame
+	frame:[Timeline_Frame];
+}  
+
+table Timeline_Frame {
+	
+	event:string;
+	sound:string;
+	action:string;
+	tweenEasing:string;
+	z:float = 0.0;
+	tweenRotate:uint = 0;
+	duration:ushort;
+	displayIndex:ushort = 0;
+	hide:bool = 0;
+	
+	transform:Transform;
+	colorTransform:ColorTransform;
+}
+
+root_type Dragonbones;

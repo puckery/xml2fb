@@ -1,0 +1,25 @@
+// example IDL file
+
+namespace flatbuffers;
+
+table TextureAtlas {
+	name:string;
+	imagePath:string;
+	
+	subTextures:[SubTexture];
+}
+
+table SubTexture {
+	name:string;
+	x:float;
+	y:float;
+	width:float;
+	height:float;
+	frameWidth:float;
+	frameHeight:float;
+	frameX:float;
+	frameY:float;
+	rotated:bool;
+}
+
+root_type TextureAtlas;
