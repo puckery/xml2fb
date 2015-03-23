@@ -431,6 +431,7 @@ Offset<TextureAtlas> createTextureAtlasTable(const tinyxml2::XMLElement* element
 	while (childElement)
 	{
 		subTextureTable = createSubTextureTable(childElement);
+		subTextures.push_back(subTextureTable);
 		childElement = childElement->NextSiblingElement();
 	}
 
