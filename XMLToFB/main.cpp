@@ -460,11 +460,11 @@ bool buildBinary(BUILD_TYPE buildType, const std::string& orignFilePath, const s
 
 	_builder = new flatbuffers::FlatBufferBuilder();
 
-	tinyxml2::XMLDocument* document = new tinyxml2::XMLDocument();
-	document->Parse(fileData.c_str());
+	tinyxml2::XMLDocument document;
+	document.Parse(fileData.c_str());
 
 	// get dragonBones info
-	const tinyxml2::XMLElement* rootElement = document->RootElement();
+	const tinyxml2::XMLElement* rootElement = document.RootElement();
 
 	switch (buildType)
 	{
