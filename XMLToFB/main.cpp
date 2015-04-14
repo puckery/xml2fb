@@ -63,8 +63,9 @@ Transform createTransformStruct(const tinyxml2::XMLElement* element)
 	float skY = getFloatAttribute(element, "skY", 0);
 	float scX = getFloatAttribute(element, "scX", 1.0f);
 	float scY = getFloatAttribute(element, "scY", 1.0f);
-
-	return Transform(x, y, skX, skY, scX, scY, 0.0f, 0.0f);
+	float pX = getFloatAttribute(element, "pX", 0.0f);
+	float pY = getFloatAttribute(element, "pY", 0.0f);
+	return Transform(x, y, skX, skY, scX, scY, pX, pY);
 }
 
 Offset<Bone> createBoneTable(const tinyxml2::XMLElement* element)
@@ -267,6 +268,7 @@ Offset<Timeline> createTimelineTable(const tinyxml2::XMLElement* element)
 Offset<Animation> createAnimationTable(const tinyxml2::XMLElement* element)
 {
 	std::string name = getAttribute(element, "name");
+
 	float fadeInTime = getFloatAttribute(element, "fadeInTime", 0.0f);
 	int duration = getIntAttribute(element, "duration");
 	float scale = getFloatAttribute(element, "scale", 1.0f);
