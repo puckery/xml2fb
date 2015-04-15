@@ -193,7 +193,7 @@ Offset<Timeline_Frame> createTimeline_FrameTable(const tinyxml2::XMLElement* ele
 	std::string sound = getAttribute(element, "sound");
 	std::string action = getAttribute(element, "action");
 	bool hide = getBoolAttribute(element, "hide", 0);
-	std::string tweenEasing = getAttribute(element, "tweenEasing", "0");
+	std::string tweenEasing = getAttribute(element, "tweenEasing", "");
 	int tweenRotate = getIntAttribute(element, "tweenRotate", 0);
 	int displayIndex = getIntAttribute(element, "displayIndex", 0);
 	float z = getFloatAttribute(element, "z", 0.f);
@@ -241,7 +241,7 @@ Offset<Timeline> createTimelineTable(const tinyxml2::XMLElement* element)
 	float offset = getFloatAttribute(element, "offset", 0.f);
 	float pX = getFloatAttribute(element, "pX", 0.f);
 	float pY = getFloatAttribute(element, "pY", 0.f);
-	
+
 	// create timeline frame
 	Offset<Timeline_Frame> timeline_frameTable;
 	std::vector<Offset<Timeline_Frame>> timeline_frames;
